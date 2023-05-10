@@ -7,7 +7,7 @@
 
 <scm>
     <developerConnection>
-        scm:git:https://github.com:jduchnowski/spring-petclinic.git
+        scm:git:https://github.com:jduchnowskigd/spring-petclinic.git
     </developerConnection>
   <tag>spring-petclinic-3.0.0</tag>
   </scm>
