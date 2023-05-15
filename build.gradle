@@ -39,6 +39,13 @@ publishing {
     }
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'org.springframework.samples.petclinic.PetClinicApplication'
+        )
+    }
+}
 
 // publishing {
 //     publications {
