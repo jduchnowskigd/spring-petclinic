@@ -7,7 +7,7 @@ RUN gradle build
 
 # Package stage
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-alpine
 ENV JAR_NAME=spring-petclinic-0.1.0.jar
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME

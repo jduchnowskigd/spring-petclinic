@@ -1,6 +1,8 @@
 version: "2.2"
 
 services:
+  app:
+    image: spring-petclinic
   mysql:
     image: mysql:8.0
     ports:
