@@ -27,5 +27,6 @@ public class PetClinicRuntimeHints implements RuntimeHintsRegistrar {
 		hints.resources().registerPattern("messages/*");
 		hints.resources().registerPattern("META-INF/resources/webjars/*");
 	}
-//Example change
+	// Example change
+
 }
