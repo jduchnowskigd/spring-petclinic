@@ -29,17 +29,12 @@ publishing {
                 password "robot273"
             }
             allowInsecureProtocol=true
-            url "http://localhost:8082/repository/maven-snapshots/"
-       
-        }
-
-        maven {
-            credentials {
-                username "admin"
-                password "robot273"
+            if(project.version.endsWith('-SNAPSHOT')) {
+              
+                url "http://localhost:8082/repository/maven-snapshots/"
+            } else {
+                url "http://localhost:8082/repository/maven-release/"
             }
-            allowInsecureProtocol=true
-            url "http://localhost:8082/repository/maven-release/"
         }
     }
 }
