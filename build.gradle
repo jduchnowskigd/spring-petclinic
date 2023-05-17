@@ -100,3 +100,12 @@ dependencies {
 tasks.named('test') {
   useJUnitPlatform()
 }
+
+task customTask() {
+  group 'Test report'
+  dependsOn 'build'
+  doLast {
+    def testReporFile = new File("${project.buildDir}/reports/tests/test", 'index.html')
+    java.awt.Desktop.desktop.browse(testReporFile.toURI())
+  }
+}
