@@ -25,8 +25,8 @@ publishing {
     repositories {
         maven {
             credentials {
-                username "admin"
-                password "robot273"
+                username "$mavenUser"
+                password "$mavenPassword"
             }
             allowInsecureProtocol=true
             if(project.version.endsWith('-SNAPSHOT')) {
@@ -46,34 +46,6 @@ jar {
         )
     }
 }
-
-
-
-// publishing {
-//     publications {
-//         mavenJava(MavenPublication) {
-//             from components.java
-//         }
-//     }
-//     repositories {
-//         maven {
-//             url "http://localhost:8082/repository/maven-release/"
-//             allowInsecureProtocol = true
-//             credentials {
-//                 username = "admin"
-//                 password = "robot273"
-//             }
-//         }
-//           maven {
-//             url "http://localhost:8082/repository/maven-snapshots/"
-//             allowInsecureProtocol = true
-//             credentials {
-//                 username = "admin"
-//                 password = "robot273"
-//             }
-//         }
-//     }
-// }
 
 ext.webjarsFontawesomeVersion = "4.7.0"
 ext.webjarsBootstrapVersion = "5.2.3"
@@ -108,4 +80,11 @@ task customTask() {
     def testReporFile = new File("${project.buildDir}/reports/tests/test", 'index.html')
     java.awt.Desktop.desktop.browse(testReporFile.toURI())
   }
+}
+
+task readCredentials {
+    doLast {
+        def jsonFile = file("./config.json")
+        def json
+    }
 }
