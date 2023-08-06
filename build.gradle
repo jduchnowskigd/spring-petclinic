@@ -5,14 +5,9 @@ plugins {
   id 'org.graalvm.buildtools.native' version '0.9.20'
   id 'pl.allegro.tech.build.axion-release' version '1.15.0'
   id 'maven-publish'
-  id 'checkstyle'
 }
 
 apply plugin: 'java'
-apply plugin: 'checkstyle'
-checkstyle {
-    toolVersion = '8.29'
-}
 
 group = 'org.springframework.samples'
 version = scmVersion.version
