@@ -1,17 +1,15 @@
 #Build stage
 
 FROM gradle:7.6.1-jdk17 AS BUILD
-WORKDIR /usr/app/
-COPY . . 
-RUN gradle build
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN ./gradlew build
 
-# Package stage
 
 FROM openjdk:17-alpine
-ENV JAR_NAME=spring-petclinic-0.1.0.jar
-ENV APP_HOME=/usr/app/
-WORKDIR $APP_HOME
-COPY --from=BUILD $APP_HOME .
-EXPOSE 8080
-ENTRYPOINT exec java -jar $APP_HOME/build/libs/$JAR_NAME  
 
+EXPOSE 8080
+RUN mkdir /app
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-petclinic.jar
+WORKDIR /app
+ENTRYPOINT ["java", "-jar", "spring-petclinic.jar"]

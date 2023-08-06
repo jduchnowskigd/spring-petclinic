@@ -47,8 +47,6 @@ jar {
     }
 }
 
-
-
 // publishing {
 //     publications {
 //         mavenJava(MavenPublication) {
