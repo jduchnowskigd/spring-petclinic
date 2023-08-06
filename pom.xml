@@ -10,8 +10,8 @@
           scm:git:https://github.com/jduchnowskigd/spring-petclinic.git
       </developerConnection>
     <tag>spring-petclinic-3.0.0</tag>
- <!-- </scm> 
---> 
+ </scm> 
+ 
   <!-- <distributionManagement>
    <snapshotRepository>
       <id>nexus</id>
