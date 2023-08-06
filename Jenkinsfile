@@ -7,9 +7,9 @@ pipeline {
     // }
 
     stages {
-        when {
-            changeRequest target: 'main'
-        }
+        // when {
+        //     changeRequest target: 'main'
+        // }
         stage('Static Code Analysis') {
             steps {
                 // Perform static code analysis using the tool of your choice (e.g., SonarQube, Checkstyle, etc.)
