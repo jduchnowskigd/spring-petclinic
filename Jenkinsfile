@@ -28,16 +28,16 @@ pipeline {
 
         stage('Create docker image') {
             steps {
-                sh 'docker build --tag janduchnowski/mr .'
-                sh 'docker login -u=janduchnowski -p=robot273' 
-                sh 'docker tag janduchnowski/mr janduchnowski/mr:${GIT_COMMIT}'
+                sh '/usr/local/bin/docker build --tag janduchnowski/mr .'
+                sh '/usr/local/bin/docker login -u=janduchnowski -p=robot273' 
+                sh '/usr/local/bin/docker tag janduchnowski/mr janduchnowski/mr:${GIT_COMMIT}'
               
             }
         }
 
         stage('Push Artifact to Artifact Storage') {
             steps {
-                  sh 'docker push janduchnowski/mr:${GIT_COMMIT}'
+                  sh '/usr/local/bin/docker push janduchnowski/mr:${GIT_COMMIT}'
             }
         }
     }
