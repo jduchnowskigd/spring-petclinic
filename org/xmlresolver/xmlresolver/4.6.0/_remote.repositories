@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sun Aug 06 21:49:04 CEST 2023
+xmlresolver-4.6.0-data.jar>central=
+xmlresolver-4.6.0.jar>central=
+xmlresolver-4.6.0.pom>central=

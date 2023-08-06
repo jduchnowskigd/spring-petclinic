@@ -12,7 +12,7 @@
     <tag>spring-petclinic-3.0.0</tag>
   </scm>
 
-  <distributionManagement>
+  <!-- <distributionManagement>
    <snapshotRepository>
       <id>nexus</id>
       <url>http://localhost:8082/repository/maven-snapshots/</url>
@@ -21,7 +21,7 @@
       <id>nexus</id>
       <url>http://localhost:8082/repository/maven-release/</url>
    </repository>
-</distributionManagement>
+</distributionManagement> -->
 
   <parent>
     <groupId>org.springframework.boot</groupId>
