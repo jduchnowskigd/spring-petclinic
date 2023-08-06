@@ -14,7 +14,7 @@ pipeline {
             steps {
                 // Perform static code analysis using the tool of your choice (e.g., SonarQube, Checkstyle, etc.)
                 // Use 'sh' to run shell commands or tools
-                sh './gradlew checkstyleMain'
+                sh 'mvn checkstyle:checkstyle'
                 // Add other static code analysis steps if needed
             }
         }
@@ -22,7 +22,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 // Run unit tests using Gradle
-                sh './gradlew test'
+                sh 'mvn test'
                 // Add other test steps if needed
             }
         }
@@ -30,7 +30,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the project using Gradle
-                sh './gradlew build'
+                sh 'mvn install'
             }
         }
 

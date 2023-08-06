@@ -1,9 +1,0 @@
-<module name="TreeWalker">
-
-        <!--Enable usage SUPPRESS CHECKSTYLE comment-->
-        <module name="SuppressWithNearbyCommentFilter">
-            <property name="commentFormat" value="CHECKSTYLE IGNORE"/>
-            <property name="checkFormat" value=".*"/>
-            <property name="influenceFormat" value="0"/>
-    
-</module>
