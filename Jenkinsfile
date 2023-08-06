@@ -7,7 +7,7 @@ pipeline {
             steps {
                 // Perform static code analysis using the tool of your choice
              
-                sh 'mvn checkstyle:checkstyle'
+                sh '/usr/local/bin/mvn checkstyle:checkstyle'
   
             }
         }
@@ -15,14 +15,14 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 // Run unit tests using Gradle
-                sh 'mvn test'
+                sh '/usr/local/bin/mvn test'
             }
         }
 
         stage('Build') {
             steps {
                 // Build the project using Gradle
-                sh 'mvn install'
+                sh '/usr/local/bin/mvn install'
             }
         }
 
