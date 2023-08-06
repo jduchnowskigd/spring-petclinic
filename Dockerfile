@@ -3,7 +3,7 @@
 FROM gradle:7.6.1-jdk17 AS BUILD
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN ./gradlew build
+RUN ./mavenw build
 
 
 FROM openjdk:17-alpine
