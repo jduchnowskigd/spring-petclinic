@@ -9,7 +9,7 @@ pipeline {
             steps {
                 // Perform static code analysis using the tool of your choice
              
-                sh 'mvn checkstyle:checkstyle'
+                sh '/usr/local/bin/mvn checkstyle:checkstyle'
                     //change
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             // }
             steps {
                 // Build the project using Gradle
-                sh 'mvn install'
+                sh '/usr/local/bin/mvn install'
             }
         }
 
@@ -39,9 +39,9 @@ pipeline {
             //     changeRequest()
             // }
             steps {
-                sh 'docker build --tag janduchnowski/mr .'
-                sh 'docker login -u=janduchnowski -p=robot273' 
-                sh 'docker tag janduchnowski/mr janduchnowski/mr:${GIT_COMMIT}'
+                sh '/usr/local/bin/docker build --tag janduchnowski/mr .'
+                sh '/usr/local/bin/docker login -u=janduchnowski -p=robot273' 
+                sh '/usr/local/bin/docker tag janduchnowski/mr janduchnowski/mr:${GIT_COMMIT}'
               
             }
         }
@@ -51,24 +51,24 @@ pipeline {
             //         changeRequest()
             //     }
             steps {
-                  sh 'docker push janduchnowski/mr:${GIT_COMMIT}'
+                  sh '/usr/local/bin/docker push janduchnowski/mr:${GIT_COMMIT}'
             }
         }
 
 //        MAIN
 //=======================================================
 
-        stage("Hello") {
-        when {
-            expression { 
-            env.BRANCH_NAME == 'main' 
-           }
-        }
+        // stage("Hello") {
+        // when {
+        //     expression { 
+        //     env.BRANCH_NAME == 'main' 
+        //    }
+        // }
 
-            steps {
-                echo "Hello"
-            }
-        }
+        //     steps {
+        //         echo "Hello"
+        //     }
+        // }
 
     }
 }
