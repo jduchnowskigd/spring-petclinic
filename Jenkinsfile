@@ -1,9 +1,8 @@
 pipeline {
     agent any
-    when {
-            changeRequest target: 'main'
+        when {
+            changeReques()
         }
-
     stages {
 
         stage('Static Code Analysis') {
@@ -44,4 +43,18 @@ pipeline {
             }
         }
     }
+}
+
+
+pipeline {
+    agent any
+        when {
+            branch "main"
+        }
+
+        stages {
+            stage('Hello') {
+                echo 'Hello World'
+            }
+        }
 }
