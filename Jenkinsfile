@@ -49,8 +49,11 @@
 pipeline {
     agent any
         when {
-            branch "main"
+            expression { 
+            env.BRANCH_NAME == 'main' 
+           }
         }
+
 
         stages {
             stage('Hello') {
