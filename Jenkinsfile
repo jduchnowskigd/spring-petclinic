@@ -48,14 +48,15 @@
 
 pipeline {
     agent any
-        when {
+
+
+        stages {
+                    when {
             expression { 
             env.BRANCH_NAME == 'main' 
            }
         }
 
-
-        stages {
             stage('Hello') {
                 echo 'Hello World'
             }
