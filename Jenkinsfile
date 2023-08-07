@@ -67,16 +67,5 @@ pipeline {
             }
         }
 
-                stage("Hello") {
-        when {
-            expression { 
-            env.BRANCH_NAME == 'main' 
-           }
-        }
-
-            steps {
-                echo "Hello"
-            }
-        }
     }
 }
