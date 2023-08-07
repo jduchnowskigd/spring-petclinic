@@ -1,11 +1,11 @@
 pipeline {
     agent any
-        when {
-            changeReques()
-        }
     stages {
 
         stage('Static Code Analysis') {
+            when {
+                changeRequest()
+            }
             steps {
                 // Perform static code analysis using the tool of your choice
              
@@ -15,6 +15,9 @@ pipeline {
         }
 
         stage('Unit Tests') {
+            when {
+                changeRequest()
+            }
             steps {
                 // Run unit tests using Gradle
                 sh '/usr/local/bin/mvn test'
@@ -22,6 +25,9 @@ pipeline {
         }
 
         stage('Build') {
+            when {
+                changeRequest()
+            }
             steps {
                 // Build the project using Gradle
                 sh '/usr/local/bin/mvn install'
@@ -29,6 +35,9 @@ pipeline {
         }
 
         stage('Create docker image') {
+            when {
+                changeRequest()
+            }
             steps {
                 sh '/usr/local/bin/docker build --tag janduchnowski/mr .'
                 sh '/usr/local/bin/docker login -u=janduchnowski -p=robot273' 
@@ -38,23 +47,24 @@ pipeline {
         }
 
         stage('Push Artifact to Artifact Storage') {
+            when {
+                    changeRequest()
+                }
             steps {
                   sh '/usr/local/bin/docker push janduchnowski/mr:${GIT_COMMIT}'
             }
         }
-    }
-}
 
-
-pipeline {
-    agent any
+        stage("Hello") {
         when {
-            branch "main"
+            expression { 
+            env.BRANCH_NAME == 'main' 
+           }
         }
 
-        stages {
-            stage('Hello') {
-                echo 'Hello World'
+            steps {
+                echo "Hello"
             }
         }
+    }
 }
