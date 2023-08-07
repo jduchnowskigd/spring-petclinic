@@ -9,7 +9,7 @@ pipeline {
             steps {
                 // Perform static code analysis using the tool of your choice
              
-                sh '/usr/local/bin/mvn checkstyle:checkstyle'
+                sh 'mvn checkstyle:checkstyle'
                     //change
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             // }
             steps {
                 // Build the project using Gradle
-                sh '/usr/local/bin/mvn install'
+                sh 'mvn install'
             }
         }
 
@@ -39,9 +39,9 @@ pipeline {
             //     changeRequest()
             // }
             steps {
-                sh '/usr/local/bin/docker build --tag janduchnowski/mr .'
-                sh '/usr/local/bin/docker login -u=janduchnowski -p=robot273' 
-                sh '/usr/local/bin/docker tag janduchnowski/mr janduchnowski/mr:${GIT_COMMIT}'
+                sh 'docker build --tag janduchnowski/mr .'
+                sh 'docker login -u=janduchnowski -p=robot273' 
+                sh 'docker tag janduchnowski/mr janduchnowski/mr:${GIT_COMMIT}'
               
             }
         }
@@ -51,7 +51,7 @@ pipeline {
             //         changeRequest()
             //     }
             steps {
-                  sh '/usr/local/bin/docker push janduchnowski/mr:${GIT_COMMIT}'
+                  sh 'docker push janduchnowski/mr:${GIT_COMMIT}'
             }
         }
 
