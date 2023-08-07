@@ -1,15 +1,9 @@
 #Build stage
 
-FROM gradle:7.6.1-jdk17 AS BUILD
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN ./mavenw install
-
-
-FROM openjdk:17-alpine
-
-EXPOSE 8080
-RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-petclinic.jar
+# Use a Maven base image from Docker Hub
+FROM maven:latest as BUILD
 WORKDIR /app
-ENTRYPOINT ["java", "-jar", "spring-petclinic.jar"]
+COPY pom.xml /app/
+COPY src /app/src/
+RUN mvn install
+
