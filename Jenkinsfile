@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    when {
-            changeRequest target: 'main'
-        }
-
     stages {
 
         stage('Static Code Analysis') {
