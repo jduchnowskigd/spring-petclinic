@@ -3,9 +3,9 @@ pipeline {
     stages {
 
         stage('Static Code Analysis') {
-            when {
-                changeRequest()
-            }
+            // when {
+            //     changeRequest()
+            // }
             steps {
                 // Perform static code analysis using the tool of your choice
              
@@ -15,9 +15,9 @@ pipeline {
         }
 
         stage('Unit Tests') {
-            when {
-                changeRequest()
-            }
+            // when {
+            //     changeRequest()
+            // }
             steps {
                 // Run unit tests using Gradle
                 sh '/usr/local/bin/mvn test'
@@ -25,9 +25,9 @@ pipeline {
         }
 
         stage('Build') {
-            when {
-                changeRequest()
-            }
+            // when {
+            //     changeRequest()
+            // }
             steps {
                 // Build the project using Gradle
                 sh '/usr/local/bin/mvn install'
@@ -35,9 +35,9 @@ pipeline {
         }
 
         stage('Create docker image') {
-            when {
-                changeRequest()
-            }
+            // when {
+            //     changeRequest()
+            // }
             steps {
                 sh '/usr/local/bin/docker build --tag janduchnowski/mr .'
                 sh '/usr/local/bin/docker login -u=janduchnowski -p=robot273' 
@@ -47,9 +47,9 @@ pipeline {
         }
 
         stage('Push Artifact to Artifact Storage') {
-            when {
-                    changeRequest()
-                }
+            // when {
+            //         changeRequest()
+            //     }
             steps {
                   sh '/usr/local/bin/docker push janduchnowski/mr:${GIT_COMMIT}'
             }
