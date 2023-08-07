@@ -1,9 +1,8 @@
 pipeline {
     agent any
-    when {
+        when {
             changeRequest target: 'main'
         }
-
     stages {
 
         stage('Static Code Analysis') {
@@ -11,7 +10,7 @@ pipeline {
                 // Perform static code analysis using the tool of your choice
              
                 sh '/usr/local/bin/mvn checkstyle:checkstyle'
-  
+                    //change
             }
         }
 
@@ -44,4 +43,18 @@ pipeline {
             }
         }
     }
+}
+
+
+pipeline {
+    agent any
+        when {
+            branch "main"
+        }
+
+        stages {
+            stage('Hello') {
+                echo 'Hello World'
+            }
+        }
 }
