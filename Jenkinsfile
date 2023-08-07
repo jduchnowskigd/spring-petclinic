@@ -1,7 +1,7 @@
 pipeline {
     agent any
         when {
-            changeRequest target: 'main'
+            changeReques()
         }
     stages {
 
