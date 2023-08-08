@@ -9,7 +9,7 @@ pipeline {
             steps {
                 // Perform static code analysis using the tool of your choice
              
-                sh 'mvn checkstyle:checkstyle'
+                sh '/usr/local/bin/mvn checkstyle:checkstyle'
                     //change
             }
         }
@@ -20,7 +20,7 @@ pipeline {
             // }
             steps {
                 // Run unit tests using Gradle
-                sh 'mvn test'
+                sh '/usr/local/bin/mvn test'
             }
         }
 
@@ -30,18 +30,18 @@ pipeline {
             // }
             steps {
                 // Build the project using Gradle
-                sh 'mvn install'
+                sh '/usr/local/bin/mvn install'
             }
         }
 
-        stage('Create docker image') {
+        stage('Create /usr/local/bin/docker image') {
             // when {
             //     changeRequest()
             // }
             steps {
-                sh 'docker build --tag janduchnowski/mr .'
-                sh 'docker login -u=janduchnowski -p=robot273' 
-                sh 'docker tag janduchnowski/mr janduchnowski/petclinic:${GIT_COMMIT}'
+                sh '/usr/local/bin/docker build --tag janduchnowski/mr .'
+                sh '/usr/local/bin/docker login -u=janduchnowski -p=robot273' 
+                sh '/usr/local/bin/docker tag janduchnowski/mr janduchnowski/petclinic:${GIT_COMMIT}'
               
             }
         }
@@ -51,7 +51,7 @@ pipeline {
             //         changeRequest()
             //     }
             steps {
-                  sh 'docker push janduchnowski/petclinic:${GIT_COMMIT}'
+                  sh '/usr/local/bin/docker push janduchnowski/petclinic:${GIT_COMMIT}'
             }
         }
 
