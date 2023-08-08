@@ -58,17 +58,18 @@ pipeline {
 //        MAIN
 //=======================================================
 
-        // stage("Hello") {
-        // when {
-        //     expression { 
-        //     env.BRANCH_NAME == 'main' 
-        //    }
-        // }
+        stage("Manual") {
+        when {
+            expression { 
+            env.BRANCH_NAME == 'main' 
+           }
+        }
 
-        //     steps {
-        //         echo "Hello"
-        //     }
-        // }
+            steps {
+                input message: 'Do you want to continue?'
+                echo "ansible-playbook -i ansible/host-dev update.yml"
+            }
+        }
 
     }
 }

@@ -1,0 +1,48 @@
+---
+- name: Configure Docker and Run Pet Clinic
+  hosts: webservers  # Replace with your target hosts
+  become: true  # Run tasks with sudo privileges
+
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+
+    - name: Log into Docker Hub
+      docker_login:
+        username: janduchnowski
+        password: robot273
+
+    - name: Define Docker image and tag
+      set_fact:
+        docker_image: "janduchnowski/petclinic"
+        docker_tag: "latest"
+
+    - docker_container:
+        name: petclinic
+        state: absent
+
+    - docker_image:
+        name: petclinic:latest
+        state: absent
+        force_absent: yes
+
+    - name: Pull Docker image
+      docker_image:
+        name: "{{ docker_image }}:{{ docker_tag }}"
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: petclinic
+        image: "{{ docker_image }}:{{ docker_tag }}"
+        state: started
+        ports:
+          - "8080:8080"
+          - "3306:3306"
