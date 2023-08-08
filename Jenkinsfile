@@ -41,7 +41,7 @@ pipeline {
             steps {
                 sh 'docker build --tag janduchnowski/mr .'
                 sh 'docker login -u=janduchnowski -p=robot273' 
-                sh 'docker tag janduchnowski/mr janduchnowski/mr:${GIT_COMMIT}'
+                sh 'docker tag janduchnowski/mr janduchnowski/petclinic:${GIT_COMMIT}'
               
             }
         }
@@ -51,7 +51,7 @@ pipeline {
             //         changeRequest()
             //     }
             steps {
-                  sh 'docker push janduchnowski/mr:${GIT_COMMIT}'
+                  sh 'docker push janduchnowski/petclinic:${GIT_COMMIT}'
             }
         }
 
